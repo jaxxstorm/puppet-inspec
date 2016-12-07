@@ -25,7 +25,7 @@ class inspec::install {
     }
     'gem': {
       package { $inspec::package_name :
-        ensure    => $inspec::package_version
+        ensure    => $inspec::package_version,
         provider  => 'gem'
       }
     }
