@@ -1,6 +1,6 @@
 {
   "name": "jaxxstorm-inspec",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "jaxxstorm",
   "summary": "A puppet module to install Chef inspec",
   "license": "MIT",
