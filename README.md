@@ -84,7 +84,7 @@ Specifies the version of the inspec package to install (default: 1.7.1-1)
 
 ##### `install_method` [String]
 
-Specifies the install method you wish to use. Possible values are: 'url' (default) : 'package'
+Specifies the install method you wish to use. Possible values are: 'url' (default) : 'package' : 'gem'
 If package is specified, it's assumed the package is in an available repo
 
 ##### `download_path` [String]
