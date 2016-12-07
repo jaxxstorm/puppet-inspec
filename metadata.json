@@ -1,0 +1,48 @@
+{
+  "name": "jaxxstorm-inspec",
+  "version": "0.1.0",
+  "author": "jaxxstorm",
+  "summary": "A puppet module to install Chef inspec",
+  "license": "MIT",
+  "source": "https://github.com/jaxxstorm/puppet-inspec",
+  "project_page": "https://github.com/jaxxstorm/puppet-inspec",
+  "issues_url": "https://github.com/jaxxstorm/puppet-inspec/issues",
+  "tags": [
+    "inspec",
+    "chef",
+    "compliance",
+    "test"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">=3.3.0 <5.0.0"
+    },
+    {
+      "name": "pe",
+      "version_requirement": ">=3.7.0 < 2015.3.0"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">=3.2.0 <5.0.0"
+    }
+  ]
+}
