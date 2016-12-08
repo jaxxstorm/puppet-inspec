@@ -23,6 +23,12 @@ class inspec::install {
         ensure => $inspec::package_version
       }
     }
+    'gem': {
+      package { $inspec::package_name :
+        ensure   => $inspec::package_version,
+        provider => 'gem'
+      }
+    }
     default: { fail("Unsupported installation method. Options are 'url' and 'package', you picked ${inspec::install_method}") }
   }
 

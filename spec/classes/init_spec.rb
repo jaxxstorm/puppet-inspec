@@ -39,4 +39,12 @@ describe 'inspec', :type => :class do
     it { should contain_package('inspec').with(:ensure => 'latest') }
   end
 
+  context "when specifying install a gem" do
+    let (:params) {{
+      :install_method => 'gem',
+      :package_version => 'latest'
+    }}
+    it { should contain_package('inspec').with(:provider => 'gem', :ensure => 'latest') }
+  end
+
 end
