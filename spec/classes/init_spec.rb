@@ -47,4 +47,15 @@ describe 'inspec', :type => :class do
     it { should contain_package('inspec').with(:provider => 'gem', :ensure => 'latest') }
   end
 
+  context "when specifying a config dir" do
+    let (:params) {{
+      :config_dir => '/etc/inspec',
+      :profiles_dir => 'profiles.d',
+      :downloads_dir => 'downloads',
+    }}
+    it { should contain_file('/etc/inspec').with(:ensure => 'directory') }
+    it { should contain_file('/etc/inspec/profiles.d').with(:ensure => 'directory') }
+    it { should contain_file('/etc/inspec/downloads').with(:ensure => 'directory') }
+  end
+
 end

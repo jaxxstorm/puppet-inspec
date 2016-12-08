@@ -65,6 +65,7 @@ Specify the URL to download from. It's a good idea to make sure you also specify
 
 #### Public Classes
   * [`inspec`](#inspec): Installs inspec in your environment.
+  * [`inspec::profile`](#inspecprofile): Downloads and installs inspec profile zip packages
 
 #### Private Classes
   * [`inspec::install`]: Installs the required inspec package using the method you specify
@@ -91,29 +92,65 @@ If package is specified, it's assumed the package is in an available repo
 
 Specifies the temporary path to download the inspec package to before installing it (default: `/tmp/`)
 
-#### `download_url_base` [String]
+##### `download_url_base` [String]
 
 Specifices the url base for the chef website to grab the package from (default: `https://packages.chef.io/stable/`)
 
-#### `download_url` [String]
+##### `download_url` [String]
 
 Specifies a custom download_url to grab the package from (default: undef)
 
-#### `os_arch` [String]
+##### `os_arch` [String]
 
 Specifies the Operating System Architecture of the package you wish to download (default: platform dependant)
 
-#### `os_family` [String]
+##### `os_family` [String]
 
 Specifies the operating system family of the package you wish to download (default: platform dependant)
 
-#### `os_ver` [String]
+##### `os_ver` [String]
 
 Specifies the major relase of the package you wish to download
 
-#### `package_suffix` [String]
+##### `package_suffix` [String]
 
 Specifies the suffix of the package you wish to download (default: platform dependant)
+
+##### `config_dir` [String]
+
+Specifies the config directory for inspec profiles (default: `/etc/inspec`)
+
+##### `profiles_dir` [String]
+
+Specifies the directory within the config dir to place profiles (default: `profiles.d`)
+
+##### `downloads_dir` [String]
+
+Specifies the directory to download profiles to if using the defined type (default: `${config_dir}/downloads`)
+
+##### `purge` [Bool]
+
+Specifies whether Puppet should purge the config directories of files not managed by Puppet (default: false)
+
+### `inspec::profile`
+
+#### Parameters
+
+##### `source` [String]
+
+Specifies the full URL to download inspec profiles from
+
+##### `ensure` [String]
+
+Specifies whether the profile should be present or not (default: `present`)
+
+##### `extract` [Bool]
+
+Specifies whether the profile should be extract. Leave this along unless you know what you're doing (default: `true)
+
+##### `extract_path` [String]
+
+Specifies a custom directory to extract profiles to (default: undef)
 
 ## Limitations
 

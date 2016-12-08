@@ -9,6 +9,10 @@ class inspec::params {
   $download_url_base = 'https://packages.chef.io/stable/'
   $download_url = undef
   $download_path = '/tmp/'
+  $config_dir = '/etc/inspec'
+  $profiles_dir = 'profiles.d'
+  $downloads_dir = 'downloads'
+  $purge = false
 
   case $::architecture {
     'x86_64', 'amd64': {
