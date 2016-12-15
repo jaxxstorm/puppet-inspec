@@ -8,6 +8,7 @@ class inspec::repo {
     'RedHat': {
       include '::inspec::repo::yum'
     }
+    default: { fail('Unsupported OS') }
   }
 
 }
