@@ -19,7 +19,6 @@
 # @param [String] repo_channel Which repo channel should be used
 # @param [String] package_url_base The base url for the chef packages
 # @param [String] package_url_type The type of repo for the chef package repo
->>>>>>> repositories
 class inspec (
   $package_name       = $inspec::params::package_name,
   $package_version    = $inspec::params::package_version,
