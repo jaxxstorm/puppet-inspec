@@ -15,6 +15,11 @@
 # @param [String] profiles_dir Directory to place inspec profiles
 # @param [String] downloads_dir Directory to place downloaded profiles
 # @param [String] purge Whether to purge config directories not managed by Puppet
+# @param [String] manage_repo Whether the package repo should be managed
+# @param [String] repo_channel Which repo channel should be used
+# @param [String] package_url_base The base url for the chef packages
+# @param [String] package_url_type The type of repo for the chef package repo
+>>>>>>> repositories
 class inspec (
   $package_name       = $inspec::params::package_name,
   $package_version    = $inspec::params::package_version,
@@ -30,6 +35,10 @@ class inspec (
   $profiles_dir       = $inspec::params::profiles_dir,
   $downloads_dir      = $inspec::params::downloads_dir,
   $purge              = $inspec::params::purge,
+  $manage_repo        = $inspec::params::manage_repo,
+  $repo_channel       = $inspec::params::repo_channel,
+  $package_url_base   = $inspec::params::package_url_base,
+  $package_url_type   = $inspec::params::package_url_type,
 ) inherits inspec::params {
 
 

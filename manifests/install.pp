@@ -19,6 +19,9 @@ class inspec::install {
       }
     }
     'package': {
+      if $inspec::manage_repo {
+        class { '::inspec::repo': }
+      }
       package { $inspec::package_name :
         ensure => $inspec::package_version
       }
