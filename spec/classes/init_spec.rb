@@ -19,6 +19,9 @@ describe 'inspec', :type => :class do
 	end
 
   context "when install via url by default" do
+    let (:params) {{
+      :install_method => 'url'
+    }}
     it { should contain_file('/tmp/').with(:ensure => 'directory') }
     it { should contain_archive('/tmp/inspec-1.7.1-1.el7.x86_64.rpm').with(:source => 'https://packages.chef.io/stable/el/7/inspec-1.7.1-1.el7.x86_64.rpm')}
     it { should contain_package('inspec').with(:source => '/tmp/inspec-1.7.1-1.el7.x86_64.rpm', :ensure => 'present') }
@@ -26,6 +29,7 @@ describe 'inspec', :type => :class do
 
   context "when providing a custom url" do
     let (:params) {{
+      :install_method => 'url',
       :download_url => 'https://my_url/inspec-1.7.1-1.el7.x86_64.rpm'
     }}
     it { should contain_archive('/tmp/inspec-1.7.1-1.el7.x86_64.rpm').with(:source => 'https://my_url/inspec-1.7.1-1.el7.x86_64.rpm') }
