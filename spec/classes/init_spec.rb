@@ -37,7 +37,29 @@ describe 'inspec', :type => :class do
       :package_version => 'latest'
     }}
     it { should contain_package('inspec').with(:ensure => 'latest') }
+    it { should contain_yumrepo('chef-stable').with(:enabled => 1, :gpgcheck => 0, :baseurl => 'https://packages.chef.io/repos/yum/stable/el/7/x86_64') }
   end
+
+  context "when specifying the current branch" do
+    let (:params) {{
+      :install_method => 'package',
+      :package_version => 'latest',
+      :repo_channel => 'current',
+    }}
+    it { should contain_package('inspec').with(:ensure => 'latest') }
+    it { should contain_yumrepo('chef-current').with(:enabled => 1, :gpgcheck => 0, :baseurl => 'https://packages.chef.io/repos/yum/current/el/7/x86_64') }
+  end
+
+  context "when not managing the repo" do
+    let (:params) {{
+      :install_method => 'package',
+      :package_version => 'latest',
+      :manage_repo => false
+    }}
+    it { should contain_package('inspec').with(:ensure => 'latest') }
+    it { should_not contain_yumrepo('chef-stable') }
+  end
+
 
   context "when specifying install a gem" do
     let (:params) {{
