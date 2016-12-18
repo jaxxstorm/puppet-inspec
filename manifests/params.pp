@@ -4,7 +4,7 @@ class inspec::params {
 
   # Global params
   $package_name = 'inspec'
-  $package_version = '1.7.1-1'
+  $package_version = 'present'
   $config_dir = '/etc/inspec'
   $profiles_dir = 'profiles.d'
   $downloads_dir = 'downloads'
@@ -23,7 +23,6 @@ class inspec::params {
     'RedHat': {
       $os_family = 'el'
       $os_ver = $::operatingsystemmajrelease
-      $package_suffix = 'rpm'
       $manage_repo = true
       $package_url_type = 'yum'
       $install_method = 'package'
