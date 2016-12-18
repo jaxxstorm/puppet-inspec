@@ -134,13 +134,13 @@ Specifies the full URL to download inspec profiles from
 
 Specifies whether the profile should be present or not (default: `present`)
 
-##### `extract` [Bool]
+##### `type` [String]
 
-Specifies whether the profile should be extract. Leave this along unless you know what you're doing (default: `true)
+Specifies the archive type for the downloaded profile. Can be either `tar.gz` or `zip` (default: `tar.gz`)
 
-##### `extract_path` [String]
+##### `version` [String]
 
-Specifies a custom directory to extract profiles to (default: undef)
+Specifies a profile version for the downloaded profile. This allows profile versioning via symlinking (default: undef)
 
 ## Limitations
 
