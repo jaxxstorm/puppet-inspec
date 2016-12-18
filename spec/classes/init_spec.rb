@@ -15,7 +15,13 @@ describe 'inspec', :type => :class do
   end
 
 	context 'defaults' do
-		it { should compile }
+    it { is_expected.to contain_class('inspec') }
+    it { is_expected.to contain_class('inspec::install').that_comes_before('Class[inspec::configure]') }
+    it { is_expected.to contain_class('inspec::configure') }
+    it { is_expected.to contain_class('inspec::params') }
+    it { is_expected.to contain_anchor('inspec_first') }
+    it { is_expected.to contain_anchor('inspec_final') }
+    it { is_expected.to compile.with_all_deps }
 	end
 
   context "when specifying package repo" do
@@ -24,6 +30,8 @@ describe 'inspec', :type => :class do
     }}
     it { should contain_package('inspec').with(:ensure => 'present') }
     it { should contain_yumrepo('chef-stable').with(:enabled => 1, :gpgcheck => 0, :baseurl => 'https://packages.chef.io/repos/yum/stable/el/7/x86_64') }
+    it { is_expected.to contain_class('inspec::repo') }
+    it { is_expected.to contain_class('inspec::repo::yum') }
   end
 
   context "when specifying a version" do
