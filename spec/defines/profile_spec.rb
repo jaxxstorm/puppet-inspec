@@ -12,18 +12,18 @@ describe 'inspec::profile', :type => :define do
         :source => 'http://my_url/test.tar.gz'
       }}
 
-      it { should contain_archive('test').with(:source => 'http://my_url/test.tar.gz', :extract_path => '/etc/inspec/downloads/test', :creates => '/etc/inspec/downloads/test') }
-      it { should contain_file('/etc/inspec/downloads/test').with(:ensure => 'symlink', :target => '/etc/inspec/profiles.d/test') }
+      it { should contain_remote_file('test').with(:source => 'http://my_url/test.tar.gz', :path => '/etc/inspec/downloads/test.tar.gz') }
+      it { should contain_file('/etc/inspec/downloads/test.tar.gz').with(:ensure => 'symlink', :target => '/etc/inspec/profiles.d/test.tar.gz') }
     end
 
-    context 'with custom extract_dir' do
+    context 'with a version' do
       let(:params) {{
-        :source => 'http://my_url/test.tar.gz',
-        :extract_path => '/etc/foo',
+        :source => 'http://my_url/test-1.0.0.tar.gz',
+        :version => '1.0.0'
       }}
-      it { should contain_archive('test').with(:source => 'http://my_url/test.tar.gz', :extract_path => '/etc/foo/test', :creates => '/etc/foo/test') }
-      it { should contain_file('/etc/foo/test').with(:ensure => 'symlink', :target => '/etc/inspec/profiles.d/test') }
-    end    
+      it { should contain_remote_file('test').with(:source => 'http://my_url/test-1.0.0.tar.gz', :path => '/etc/inspec/downloads/test-1.0.0.tar.gz') }
+      it { should contain_file('/etc/inspec/downloads/test-1.0.0.tar.gz').with(:ensure => 'symlink', :target => '/etc/inspec/profiles.d/test.tar.gz') }
+    end
   end
 
 end

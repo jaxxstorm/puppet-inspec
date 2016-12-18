@@ -29,4 +29,5 @@ group :test do
   gem "puppet-blacksmith"
   gem "serverspec"
   gem "net-ssh", "~> 2.9.0"
+  gem "metadata-json-lint"
 end
