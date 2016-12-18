@@ -2,22 +2,6 @@
 class inspec::install {
 
   case $inspec::install_method {
-    'url': {
-      include ::archive
-
-      file { $inspec::download_path :
-        ensure => directory,
-      } ->
-      archive { "${inspec::download_path}${inspec::package_name}-${inspec::package_version}.${inspec::os_family}${inspec::os_ver}.${inspec::os_arch}.${inspec::package_suffix}" :
-        ensure => present,
-        source => $inspec::real_download_url,
-      } ->
-      package { 'inspec':
-        ensure   => present,
-        provider => 'rpm',
-        source   => "${inspec::download_path}${inspec::package_name}-${inspec::package_version}.${inspec::os_family}${inspec::os_ver}.${inspec::os_arch}.${inspec::package_suffix}"
-      }
-    }
     'package': {
       if $inspec::manage_repo {
         class { '::inspec::repo': }
@@ -32,7 +16,7 @@ class inspec::install {
         provider => 'gem'
       }
     }
-    default: { fail("Unsupported installation method. Options are 'url' and 'package', you picked ${inspec::install_method}") }
+    default: { fail("Unsupported installation method. Options are 'gem' and 'package', you picked ${inspec::install_method}") }
   }
 
 }

@@ -5,9 +5,6 @@ class inspec::params {
   # Global params
   $package_name = 'inspec'
   $package_version = '1.7.1-1'
-  $download_url_base = 'https://packages.chef.io/stable/'
-  $download_url = undef
-  $download_path = '/tmp/'
   $config_dir = '/etc/inspec'
   $profiles_dir = 'profiles.d'
   $downloads_dir = 'downloads'

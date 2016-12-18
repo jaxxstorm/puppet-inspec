@@ -48,17 +48,6 @@ You may want to use a class include if you wish to override parameters:
   include ::inspec
 ```
 
-### I want to install the package from a custom url
-
-Specify the URL to download from. It's a good idea to make sure you also specify the version specifically, so Puppet knows about it
-
-```puppet
-  class { '::inspec' :
-    download_url => 'http://my_url/inspec-1.7.1-1.el6.x86_64.rpm'
-    version      => '1.7.1-1'
-  }
-```
-
 ## Reference
 
 ### Classes
@@ -87,18 +76,6 @@ Specifies the version of the inspec package to install (default: 1.7.1-1)
 
 Specifies the install method you wish to use. Possible values are: 'url' (default) : 'package' : 'gem'
 If package is specified, it's assumed the package is in an available repo
-
-##### `download_path` [String]
-
-Specifies the temporary path to download the inspec package to before installing it (default: `/tmp/`)
-
-##### `download_url_base` [String]
-
-Specifices the url base for the chef website to grab the package from (default: `https://packages.chef.io/stable/`)
-
-##### `download_url` [String]
-
-Specifies a custom download_url to grab the package from (default: undef)
 
 ##### `os_arch` [String]
 
