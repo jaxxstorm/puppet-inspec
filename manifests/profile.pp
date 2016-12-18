@@ -9,30 +9,24 @@
 #
 # @param [String] source Specifies the URL to download the profile from
 # @param [String] ensure Specifies with the profile should exist or not
-# @param [String] extract Specifies whether the profile should be extracted
-# @param [String] extract_path Specifies a custom path to extract profiles to
+# @param [String] type Specifies the archive type of the profile
 define inspec::profile (
   $source,
   $ensure         = 'present',
-  $extract        = true,
-  $extract_path   = undef,
+  $type           = 'tar.gz',
 ) {
 
   include ::inspec
 
-  $_profile_dir = pick($extract_path, "${::inspec::config_dir}/${::inspec::downloads_dir}")
-
-  archive { $name:
-    ensure       => $ensure,
-    source       => $source,
-    extract      => $extract,
-    extract_path => "${_profile_dir}/${name}",
-    creates      => "${_profile_dir}/${name}",
+  remote_file { "${name}" :
+    ensure => $ensure,
+    path   => "${::inspec::config_dir}/${::inspec::downloads_dir}/${name}.${type}",
+    source => $source,
   }
 
-  file { "${_profile_dir}/${name}" :
+  file { "${::inspec::config_dir}/${::inspec::downloads_dir}/${name}.${type}" :
     ensure => 'symlink',
-    target => "${::inspec::config_dir}/${::inspec::profiles_dir}/${name}"
+    target => "${::inspec::config_dir}/${::inspec::profiles_dir}/${name}.${type}"
   }
 
 }
