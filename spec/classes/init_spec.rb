@@ -21,10 +21,16 @@ describe 'inspec', :type => :class do
   context "when specifying package repo" do
     let (:params) {{
       :install_method => 'package',
-      :package_version => 'latest'
     }}
-    it { should contain_package('inspec').with(:ensure => 'latest') }
+    it { should contain_package('inspec').with(:ensure => 'present') }
     it { should contain_yumrepo('chef-stable').with(:enabled => 1, :gpgcheck => 0, :baseurl => 'https://packages.chef.io/repos/yum/stable/el/7/x86_64') }
+  end
+
+  context "when specifying a version" do
+    let(:params) {{
+      :package_version => '_value_'
+    }}
+    it { should contain_package('inspec').with(:ensure => '_value_') }
   end
 
   context "when specifying the current branch" do

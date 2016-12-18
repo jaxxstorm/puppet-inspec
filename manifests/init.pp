@@ -7,7 +7,6 @@
 # @param [String] package_version The version of the package to install
 # @param [String] install_method The method of installing the package
 # @param [String] os_arch The OS arch of the package to download
-# @param [String] package_suffix The suffix of the package to download
 # @param [String] config_dir The configuration directory for inspec
 # @param [String] profiles_dir Directory to place inspec profiles
 # @param [String] downloads_dir Directory to place downloaded profiles
@@ -23,7 +22,6 @@ class inspec (
   $os_arch            = $inspec::params::os_arch,
   $os_family          = $inspec::params::os_family,
   $os_ver             = $inspec::params::os_ver,
-  $package_suffix     = $inspec::params::package_suffix,
   $config_dir         = $inspec::params::config_dir,
   $profiles_dir       = $inspec::params::profiles_dir,
   $downloads_dir      = $inspec::params::downloads_dir,

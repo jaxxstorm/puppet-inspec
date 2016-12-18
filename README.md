@@ -70,7 +70,7 @@ Specifies the package to install for inspec
 
 ##### `package_version` [String]
 
-Specifies the version of the inspec package to install (default: 1.7.1-1)
+Specifies the version of the inspec package to install (default: installed)
 
 ##### `install_method` [String]
 
@@ -89,10 +89,6 @@ Specifies the operating system family of the package you wish to download (defau
 
 Specifies the major relase of the package you wish to download
 
-##### `package_suffix` [String]
-
-Specifies the suffix of the package you wish to download (default: platform dependant)
-
 ##### `config_dir` [String]
 
 Specifies the config directory for inspec profiles (default: `/etc/inspec`)
@@ -108,6 +104,22 @@ Specifies the directory to download profiles to if using the defined type (defau
 ##### `purge` [Bool]
 
 Specifies whether Puppet should purge the config directories of files not managed by Puppet (default: false)
+
+##### `manage_repo` [Bool]
+
+Specifies whether the inspec/chef repo should be added to install packages (default: true)
+
+##### `repo_channel` [String]
+
+Specifies the repo channel from chef that should be used, can be either stable or current (default: `stable`)
+
+##### `package_url_base` [String]
+
+Specifies the URL of the chef/inspec package repository (default: `https://packages.chef.io/repos/`)
+
+##### `package_url_type` [String]
+
+Specifies the package type for the repo url. (default: OS dependent)
 
 ### `inspec::profile`
 
