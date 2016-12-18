@@ -1,6 +1,7 @@
 # puppet-inspec
 
 [![Build Status](https://travis-ci.org/jaxxstorm/puppet-inspec.svg?branch=master)](https://travis-ci.org/jaxxstorm/puppet-inspec)
+[![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://saythanks.io/to/jaxxstorm)
 
 #### Table of Contents
 
