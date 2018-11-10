@@ -35,9 +35,9 @@ class inspec (
 
   validate_bool($purge)
 
-  anchor { 'inspec_first': } ->
-  class { 'inspec::install': } ->
-  class { 'inspec::configure': } ->
+  anchor { 'inspec_first': }      ->
+  class { 'inspec::install': }    ->
+  class { 'inspec::configure': }  ->
   anchor { 'inspec_final': }
 
 }

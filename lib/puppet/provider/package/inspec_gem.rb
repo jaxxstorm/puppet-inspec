@@ -2,7 +2,7 @@ require 'puppet/provider/package'
 require 'uri'
 
 # Ruby gems support.
-Puppet::Type.type(:package).provide :inspec_gem, :parent => :gem do
+Puppet::Type.type(:package).provide :inspec_gem, parent: :gem do
   desc "Inspec Embedded Ruby Gem support. If a URL is passed via `source`, then
     that URL is used as the remote gem repository; if a source is present but is
     not a valid URL, it will be interpreted as the path to a local gem file.  If
@@ -11,20 +11,19 @@ Puppet::Type.type(:package).provide :inspec_gem, :parent => :gem do
 
   has_feature :versionable, :install_options
 
-  commands :gemcmd =>
-    if File.exists?("#{ENV['SYSTEMDRIVE']}\\opt\\inspec\\embedded\\bin\\gem.bat")
+  commands gemcmd:
+    if File.exist?("#{ENV['SYSTEMDRIVE']}\\opt\\inspec\\embedded\\bin\\gem.bat")
       "#{ENV['SYSTEMDRIVE']}\\opt\\inspec\\embedded\\bin\\gem.bat"
     else
-      "/opt/inspec/embedded/bin/gem"
+      '/opt/inspec/embedded/bin/gem'
     end
 
   def uninstall
-    command = [command(:gemcmd), "uninstall"]
-    command << "-x" << "-a" << resource[:name]
+    command = [command(:gemcmd), 'uninstall']
+    command << '-x' << '-a' << resource[:name]
     output = execute(command)
 
     # Apparently some stupid gem versions don't exit non-0 on failure
-    self.fail "Could not uninstall: #{output.chomp}" if output.include?("ERROR")
+    raise "Could not uninstall: #{output.chomp}" if output.include?('ERROR')
   end
-
 end
